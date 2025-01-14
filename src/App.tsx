@@ -1,15 +1,28 @@
 
 import './App.css'
-import BeerList from './components/BeerList/BeerList'
+import {
+  Route,
+  Routes
+} from "react-router-dom";
+import HomePage from './pages/HomePage';
+import DetailPage from './pages/DetailPage';
+import MainLayout from './layout/MainLayout';
+
 
 function App() {
 
   return (
     <>
-      <div>
-        <BeerList />
-      </div>
+      <Routes>
+        <Route path='/' element={<MainLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path='/beers/:id' element={<DetailPage />} />
+        </Route>
+      </Routes>
     </>
+
+
+
   )
 }
 
