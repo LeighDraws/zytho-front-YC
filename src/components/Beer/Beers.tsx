@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
 import { Beer } from "../../models/BeerModel";
 
 function Beers(props: Beer) {
+
+    const id = props.beer_id
 
     return (
         <>
@@ -14,12 +17,12 @@ function Beers(props: Beer) {
                     <div className="mt-4 flex justify-between">
                         <div>
                             <h3 className="text-sm text-gray-700 justify-self-start">
-                                <a href="#">
+                                <Link to={`/beers/${id}`}>
                                     <span aria-hidden="true" className="absolute inset-0" />
                                     {props.name}
-                                </a>
+                                </Link>
                             </h3>
-                            <p className="mt-1 text-sm text-gray-500 justify-self-start">{props.color} {props.abv}</p>
+                            <p className="mt-1 text-sm text-gray-500 justify-self-start">{props.color} {props.beer_id}</p>
                         </div>
                         <p className="text-sm font-medium text-gray-900">{props.price}</p>
                     </div>

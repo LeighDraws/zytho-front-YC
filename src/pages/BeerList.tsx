@@ -1,22 +1,14 @@
-import { useState, useEffect } from 'react';
-import axios, { AxiosResponse } from "axios";
-import { Beer } from "../../models/BeerModel"
-import Beers from '../Beer/Beers';
+import { useFetchBeers } from "../hooks/useFetchBeers";
+import Beers from '../components/Beer/Beers';
 
-const BEER_API = "http://localhost:3000/beers"
+const BEERS_API = "http://localhost:3000/beers";
 
 function BeerList() {
 
-    const [beers, setBeers] = useState<Beer[]>([]);
+    const { beers, loading, error } = useFetchBeers(BEERS_API);
 
-    useEffect(() => {
-        axios.get(BEER_API).then((response: AxiosResponse) => {
-            const data = response.data
-            const beers = data.beers
-            setBeers(beers)
-        })
-    }, [])
-
+    if (loading) return <div>Les bières sont entrain d'être brassées...</div>
+    if (error) return <div>Erreur lors du chargement, {error}</div>
     console.log("bières: ", beers)
 
     return (

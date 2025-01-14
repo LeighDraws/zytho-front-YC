@@ -8,5 +8,10 @@ export interface Beer {
   picture_url: string;
   production_date: Date;
   brewery_id: number;
-  brewery: string
+  brewery: string;
+
+  // Propriété de bière-details
+
+  category?:string;
+  country?: string;
 }
