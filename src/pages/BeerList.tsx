@@ -1,5 +1,5 @@
 import { useFetchBeers } from "../hooks/useFetchBeers";
-import Beers from '../components/Beer/Beers';
+import Beers from '../components/Beers'
 
 const BEERS_API = "http://localhost:3000/beers";
 

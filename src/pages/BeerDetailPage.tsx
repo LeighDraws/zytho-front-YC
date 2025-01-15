@@ -1,6 +1,6 @@
-import BeersDetail from "../components/BeerDetail/BeerDetail";
+import BeersDetail from '../components/BeerDetail'
 
-function DetailPage() {
+function BeerDetailPage() {
 
     return(
         <>
@@ -11,4 +11,4 @@ function DetailPage() {
     )
 }
 
-export default DetailPage;
+export default BeerDetailPage;

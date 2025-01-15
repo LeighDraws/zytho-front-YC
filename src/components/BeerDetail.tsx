@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useFetchOneBeer } from "../../hooks/useFetchOneBeer";
-import { Beer } from "../../models/BeerModel";
+import { useFetchOneBeer } from "../hooks/useFetchOneBeer";
+import { Beer } from "../models/BeerModel";
 
 
 
@@ -21,7 +21,7 @@ function BeersDetail() {
                 <div className="flex flex-wrap -mx-4">
 
                     <div className="w-full md:w-1/2 px-4 mb-8">
-                        <img src={beer?.picture_url} alt={beer?.name} className="w-full h-auto rounded-lg shadow-md mb-4" id="mainImage" />
+                        <img src={beer?.picture_url} alt={beer?.name} className="w-96 h-auto rounded-lg shadow-md mb-4" id="mainImage" />
                         <div className="flex gap-4 py-4 justify-center overflow-x-auto">
                             {/* <img src="https://images.unsplash.com/photo-1505751171710-1f6d0ace5a85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMnx8aGVhZHBob25lfGVufDB8MHx8fDE3MjEzMDM2OTB8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="Thumbnail 1"
                                         className="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Beer } from "../../models/BeerModel";
+import { Beer } from "../models/BeerModel";
 
 function Beers(props: Beer) {
 
@@ -8,7 +8,7 @@ function Beers(props: Beer) {
     return (
         <>
             <article>
-                <div key={props.beer_id} className="group relative">
+                <div key={props.beer_id} className="group relative pb-3  border-b-4 border-amber-300 hover:border-amber-200">
                     <img
                         alt={props.name}
                         src={props.picture_url}
@@ -22,9 +22,9 @@ function Beers(props: Beer) {
                                     {props.name}
                                 </Link>
                             </h3>
-                            <p className="mt-1 text-sm text-gray-500 justify-self-start">{props.color} {props.beer_id}</p>
+                            <p className="mt-1 text-sm text-gray-500 justify-self-start uppercase">{props.color}</p>
                         </div>
-                        <p className="text-sm font-medium text-gray-900">{props.price}</p>
+                        <p className="text-sm font-medium text-gray-900">{props.price} €</p>
                     </div>
                 </div>
             </article>
