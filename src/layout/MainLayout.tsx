@@ -1,4 +1,4 @@
-import { Disclosure, DisclosureButton, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import { NavLink, Outlet } from "react-router-dom";
 import beericon from "../assets/beericon.png"
@@ -19,6 +19,7 @@ function MainLayout() {
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+
               {/* Mobile menu button*/}
               <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                 <span className="absolute -inset-0.5" />
@@ -38,6 +39,7 @@ function MainLayout() {
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
                   <NavLink to="/">Accueil</NavLink>
+                  <NavLink to="/breweries">Les Brasseries</NavLink>
                 </div>
               </div>
 
@@ -91,6 +93,14 @@ function MainLayout() {
             </div>
           </div>
         </div>
+
+        <DisclosurePanel className="sm:hidden">
+          <div className="space-y-1 px-2 pb-3 pt-2">
+            <NavLink to="/">Accueil </NavLink><br/>
+            <NavLink to="/breweries">Les Brasseries</NavLink>
+          </div>
+        </DisclosurePanel>
+
       </Disclosure>
 
       <main>
