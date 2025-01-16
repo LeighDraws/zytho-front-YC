@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
-import { useFetchOneBeer } from "../hooks/useFetchOneBeer";
 import { Beer } from "../models/BeerModel";
+import { useFetch } from "../hooks/useFetch";
 
 
 
 function BeersDetail() {
 
     const { id } = useParams()
-    const BEER_API = `http://localhost:3000/beers/${id}`
-    const { beer, loading, error } = useFetchOneBeer<Beer>(BEER_API)
+    const BEER_API: string = `http://localhost:3000/beers/${id}`
+    const { data: beer, loading, error } = useFetch<Beer>(BEER_API, "beer")
 
     console.log("la bière", beer)
 

@@ -2,30 +2,30 @@
 import { useState, useEffect } from 'react';
 import axios, { AxiosResponse } from "axios";
 
-export function useFetchOneBeer<Beer>(API_URL: string) {
+export function useFetch<T>(API_URL: string, dataKey : string) {
     // Retourne les données récupérées
-    const [beer, setBeer] = useState<Beer>();
+    const [data, setData] = useState<T | null>(null);
     // Gestion du chargement = booléen pour savoir si les données sont entrain d'être chargées ou non
     const [loading, setLoading] = useState<boolean>(true);
     // Gestion des erreurs = Permettra d'afficher un message d'erreur
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchBeer = async () => {
+        const fetchData = async () => {
             try {
-                const response: AxiosResponse = await axios.get<Beer>(API_URL);
-                const data = response.data;
-                const beer = data.beer;
-                setBeer(beer);
+                const response: AxiosResponse = await axios.get<T>(API_URL);
+                const data = response.data[dataKey];
+                console.log(data)
+                setData(data);
             } catch (err) {
-                setError("Erreur lors de la récupération des bières.");
+                setError("Erreur lors de la récupération des données.");
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchBeer();
-    }, [API_URL]);  // Le tableau vide [] pour executer l'effect une seule fois au composant
+        fetchData();
+    }, [API_URL, dataKey]);  // Le tableau vide [] pour executer l'effect une seule fois au composant
 
-    return { beer, loading, error };
+    return { data, loading, error };
 }
