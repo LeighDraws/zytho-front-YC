@@ -31,9 +31,18 @@ function MainLayout() {
               </div>
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
-                  <NavLink to="/">Accueil</NavLink>
-                  <NavLink to="/beers">Les Bières</NavLink>
-                  <NavLink to="/breweries">Les Brasseries</NavLink>
+                  <NavLink to="/" className={({ isActive }) =>
+                    `font-medium hover:text-yellow-600 ${isActive ? "text-yellow-600" : "text-gray-900"}`
+                  }
+                  > Accueil</NavLink>
+                  <NavLink to="/beers" className={({ isActive }) =>
+                    `font-medium hover:text-yellow-600 ${isActive ? "text-yellow-600" : "text-gray-900"}`
+                  }
+                  >Les Bières</NavLink>
+                  <NavLink to="/breweries" className={({ isActive }) =>
+                    `font-medium hover:text-yellow-600 ${isActive ? "text-yellow-600" : "text-gray-900"}`
+                  }
+                  >Les Brasseries</NavLink>
                 </div>
               </div>
 
@@ -44,15 +53,15 @@ function MainLayout() {
               <Menu as="div" className="relative ml-3">
                 <div>
                   <NavLink to='/profile'>
-                  <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                    <span className="absolute -inset-1.5" />
-                    <span className="sr-only">Ouvrir Profil</span>
-                    <img
-                      alt=""
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      className="size-8 rounded-full"
-                    />
-                  </MenuButton>
+                    <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                      <span className="absolute -inset-1.5" />
+                      <span className="sr-only">Ouvrir Profil</span>
+                      <img
+                        alt=""
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        className="size-8 rounded-full"
+                      />
+                    </MenuButton>
                   </NavLink>
                 </div>
               </Menu>
@@ -68,7 +77,7 @@ function MainLayout() {
           </div>
         </DisclosurePanel>
 
-      </Disclosure>
+      </Disclosure >
 
       <main>
         <Outlet />

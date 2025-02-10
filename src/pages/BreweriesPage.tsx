@@ -6,7 +6,9 @@ const BREWERIES_API = "http://localhost:3000/breweries"
 
 function BreweriesPage() {
 
-    const { data:breweries, loading, error } = useFetch<Brewery[]>(BREWERIES_API, "breweries");
+    const { data: breweriesData, loading, error } = useFetch<{ breweries: Brewery[] }>(BREWERIES_API);
+
+    const breweries = breweriesData?.breweries;
 
     if (loading) return <div>Les bières sont entrain d'être brassées...</div>
     if (error) return <div>Erreur lors du chargement, {error}</div>
@@ -14,6 +16,7 @@ function BreweriesPage() {
 
     return (
         <>
+            {/* Informations principales de la brasserie */}
             <section className="mx-auto min-w-max max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                 <div className="text-gray-600 body-font">
                     <h2 className="text-3xl font-bold tracking-tight ml-6 text-gray-900">Les Brasseries</h2>
@@ -36,8 +39,6 @@ function BreweriesPage() {
                     </div>
                 </div>
             </section>
-
-
         </>
     )
 }
