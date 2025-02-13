@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Ingredient } from "../models/IngredientModel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import BeersFromBrew from "./BeersFromBrew";
 
 
 function BeersDetail() {
@@ -96,6 +97,8 @@ function BeersDetail() {
                     </div>
                     <img alt={`Photo de la bière ${beer?.name}`} className="lg:w-1/2 w-full lg:h-96 h-64 lg:mt-4 object-cover object-center rounded" src={beer?.picture_url} />
                 </div>
+
+                {brewId && <BeersFromBrew breweryId={brewId} />}
             </div>
         </section>
     )

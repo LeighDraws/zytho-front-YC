@@ -10,6 +10,7 @@ import BeersFromBrew from "../components/BeersFromBrew";
 function BreweryDetailPage() {
 
     const { id } = useParams()
+    const breweryId = Number(id)
 
     // Récupérer les infos de la brasserie
     const BREWERY_API = `http://localhost:3000/breweries/${id}`
@@ -56,7 +57,7 @@ function BreweryDetailPage() {
                 </div>
             </section>
 
-            <BeersFromBrew />
+            <BeersFromBrew breweryId={breweryId} />
 
         </>
     )

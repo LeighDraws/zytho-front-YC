@@ -2,17 +2,15 @@ import { Beer } from "../models/BeerModel";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useFetch } from "../hooks/useFetch";
-import { useParams } from "react-router-dom";
 
-function BeersFromBrew() {
-
-    const { id } = useParams()
+function BeersFromBrew({ breweryId }:{ breweryId: number }) {
 
     // Récupérer les bières de la brasserie
-    const BEERS_BREWERIES_API = `http://localhost:3000/beers/breweries/${id}`
+    const BEERS_BREWERIES_API = `http://localhost:3000/beers/breweries/${breweryId}`
     const { data: beersData } = useFetch<{ beers: Beer[] }>(BEERS_BREWERIES_API)
 
     const beers = beersData?.beers;
+    console.log("bières:", beers)
 
     const scrollLeft = () => {
         const carousel = document.getElementById("beerCarousel");
