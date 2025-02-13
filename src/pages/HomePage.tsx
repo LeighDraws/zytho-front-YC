@@ -16,8 +16,8 @@ function HomePage() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [query, setQuery] = useState("");
 
-    if (loading) return <div>Les bières sont entrain d'être brassées...</div>
-    if (error) return <div>Erreur lors du chargement, {error}</div>
+    if (loading) return <div className="container mx-auto mt-20 px-10 py-14 italic text-center text-lg bg-gray-100">Les bières sont entrain d'être brassées...</div>
+    if (error) return <div className="container mx-auto mt-20 px-10 py-14 text-red-600 italic text-center text-lg bg-gray-100">{error}</div>
 
     const handleSearch = (newQuery: string) => {
         setQuery(newQuery);
@@ -47,7 +47,7 @@ function HomePage() {
 
     return (
         <>
-            <section className="text-gray-600 body-font ">
+            <section className="text-gray-600 body-font">
                 <div className="container mx-auto flex flex-col px-5 py-14 md:flex-rowitems-center border-b-2 border-amber-300">
 
                     <div className="w-[50%] !self-center px-0 pt-8 pb-20">
