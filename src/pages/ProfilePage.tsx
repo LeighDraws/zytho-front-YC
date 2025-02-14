@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Beer } from "../models/BeerModel";
 import Beers from "../components/Beers";
 
-const USER_API: string = "http://localhost:3000/users/3"
+const USER_API: string = "https://zythologue-api-pxf6.onrender.com/users/3"
 
 function ProfilePage() {
 
@@ -13,11 +13,11 @@ function ProfilePage() {
     const user = userData?.user;
 
     // Récupérer les infos de la brasserie
-    const BREWERY_API = `http://localhost:3000/breweries/owner/3`
+    const BREWERY_API = `https://zythologue-api-pxf6.onrender.com/breweries/owner/3`
     const { data: brew } = useFetch<{ brewery: Brewery }>(BREWERY_API)
     const brewery = brew?.brewery
 
-    const FAVORITES_API = `http://localhost:3000/fave/3`;
+    const FAVORITES_API = `https://zythologue-api-pxf6.onrender.com/fave/3`;
     const { data: favoriteBeers } = useFetch<{ favorites: Beer[] }>(FAVORITES_API);
     const beers = favoriteBeers?.favorites
 

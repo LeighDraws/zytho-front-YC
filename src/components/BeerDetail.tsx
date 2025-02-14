@@ -13,11 +13,11 @@ import { useDelete } from "../hooks/useDelete";
 function BeersDetail() {
     // Récupérer les infos de la bière
     const { id } = useParams()
-    const BEER_API: string = `http://localhost:3000/beers/${id}`
+    const BEER_API: string = `https://zythologue-api-pxf6.onrender.com/beers/${id}`
     const { data: beerData, loading, error } = useFetch<{ beer: Beer }>(BEER_API)
 
     // Récupérer les ingrédients de la bière
-    const INGREDIENT_API: string = `http://localhost:3000/beers/ingredients/${id}`
+    const INGREDIENT_API: string = `https://zythologue-api-pxf6.onrender.com/beers/ingredients/${id}`
     const { data: ingredientsData } = useFetch<{ ingredients: Ingredient[] }>(INGREDIENT_API)
 
     // Assigner les variables
@@ -27,7 +27,7 @@ function BeersDetail() {
     // Utilisation des tabs pour Description / Ingrédients
     const [activeTab, setActiveTab] = useState("tab1")
 
-    const FAVORITES_API = `http://localhost:3000/fave/3`;
+    const FAVORITES_API = `https://zythologue-api-pxf6.onrender.com/fave/3`;
     const { data: favoriteData } = useFetch<{ favorites: Beer[] }>(FAVORITES_API);
 
     // Gestion des like 

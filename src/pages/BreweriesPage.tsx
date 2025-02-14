@@ -2,7 +2,7 @@ import Breweries from "../components/Breweries";
 import { useFetch } from "../hooks/useFetch";
 import { Brewery } from "../models/BreweryModel";
 
-const BREWERIES_API = "http://localhost:3000/breweries"
+const BREWERIES_API = "https://zythologue-api-pxf6.onrender.com/breweries"
 
 function BreweriesPage() {
 

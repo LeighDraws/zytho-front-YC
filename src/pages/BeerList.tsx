@@ -21,7 +21,7 @@ const categories = [
     { id: '13', value: 'IPA', label: 'IPA', checked: false },
 ]
 
-const BEERS_API: string = "http://localhost:3000/beers";
+const BEERS_API: string = "https://zythologue-api-pxf6.onrender.com/beers";
 
 function BeerList() {
 

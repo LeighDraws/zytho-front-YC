@@ -10,7 +10,7 @@ export function usePost() {
     setError(null);
 
     try {
-      await axios.post(`http://localhost:3000/fave/user/${beerId}/${userId}`)
+      await axios.post(`https://zythologue-api-pxf6.onrender.com/fave/user/${beerId}/${userId}`)
       console.log('Post!', beerId, userId);
 
     } catch (err) {

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function BeersFromBrew({ breweryId }: { breweryId: number }) {
 
     // Récupérer les bières de la brasserie
-    const BEERS_BREWERIES_API = `http://localhost:3000/beers/breweries/${breweryId}`
+    const BEERS_BREWERIES_API = `https://zythologue-api-pxf6.onrender.com/beers/breweries/${breweryId}`
     const { data: beersData } = useFetch<{ beers: Beer[] }>(BEERS_BREWERIES_API)
 
     const beers = beersData?.beers;

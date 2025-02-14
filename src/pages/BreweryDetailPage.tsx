@@ -13,12 +13,12 @@ function BreweryDetailPage() {
     const breweryId = Number(id)
 
     // Récupérer les infos de la brasserie
-    const BREWERY_API = `http://localhost:3000/breweries/${id}`
+    const BREWERY_API = `https://zythologue-api-pxf6.onrender.com/breweries/${id}`
     const { data: brew, loading, error } = useFetch<{brewery : Brewery}>(BREWERY_API)
     const brewery = brew?.brewery
 
     // Récupérer les infos du propriétaire
-    const USER_API = `http://localhost:3000/users/breweries/${id}`
+    const USER_API = `https://zythologue-api-pxf6.onrender.com/users/breweries/${id}`
     const { data: user } = useFetch<{user : User}>(USER_API)
     const owner = user?.user
 

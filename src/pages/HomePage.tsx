@@ -6,7 +6,7 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import SearchBar from "../components/SearchBar";
 
-const BEERS_API: string = "http://localhost:3000/beers";
+const BEERS_API: string = "https://zythologue-api-pxf6.onrender.com/beers";
 
 function HomePage() {
 

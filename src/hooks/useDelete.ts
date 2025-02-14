@@ -10,7 +10,7 @@ export function useDelete() {
     setError(null);
 
     try {
-      await axios.delete(`http://localhost:3000/fave/user/${userId}/beer/${beerId}`);
+      await axios.delete(`https://zythologue-api-pxf6.onrender.com/fave/user/${userId}/beer/${beerId}`);
       console.log("DELETE")
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {

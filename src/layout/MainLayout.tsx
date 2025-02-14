@@ -5,7 +5,7 @@ import beericon from "../assets/beericon.png"
 import { useFetch } from '../hooks/useFetch';
 import { User } from '../models/UserModel';
 
-const USER_API: string = "http://localhost:3000/users/3"
+const USER_API: string = "https://zythologue-api-pxf6.onrender.com/users/3"
 
 function MainLayout() {
 
