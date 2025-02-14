@@ -1,30 +1,64 @@
 import { NavLink, useParams } from "react-router-dom";
 import { Beer } from "../models/BeerModel";
 import { useFetch } from "../hooks/useFetch";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Ingredient } from "../models/IngredientModel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import BeersFromBrew from "./BeersFromBrew";
+import { usePost } from "../hooks/usePost";
+import { useDelete } from "../hooks/useDelete";
 
 
 function BeersDetail() {
-
+    // Récupérer les infos de la bière
     const { id } = useParams()
     const BEER_API: string = `http://localhost:3000/beers/${id}`
     const { data: beerData, loading, error } = useFetch<{ beer: Beer }>(BEER_API)
 
+    // Récupérer les ingrédients de la bière
     const INGREDIENT_API: string = `http://localhost:3000/beers/ingredients/${id}`
     const { data: ingredientsData } = useFetch<{ ingredients: Ingredient[] }>(INGREDIENT_API)
 
+    // Assigner les variables
     const beer = beerData?.beer;
     const ingredients = ingredientsData?.ingredients;
-    console.log(ingredients)
 
+    // Utilisation des tabs pour Description / Ingrédients
     const [activeTab, setActiveTab] = useState("tab1")
 
-    if (loading) return <div>La bière est entrain d'être brassée...</div>
-    if (error) return <div>Erreur lors du chargement, {error}</div>
+    const FAVORITES_API = `http://localhost:3000/fave/3`;
+    const { data: favoriteData } = useFetch<{ favorites: Beer[] }>(FAVORITES_API);
+
+    // Gestion des like 
+    const { postData } = usePost()
+
+    // Supprimer des favoris
+    const { deleteData } = useDelete()
+
+    const [isLiked, setIsLiked] = useState(false); 
+
+    useEffect(() => {
+        if (favoriteData) {
+            setIsLiked(favoriteData.favorites.some(fav => fav.beer_id === Number(id)));
+        }
+    }, [favoriteData, id]); 
+    
+    const toggleLike = async (beerId: number, userId: number) => {
+        if (isLiked) {
+            await deleteData(userId, beerId);
+            console.log("test de delete", beerId, userId);
+            setIsLiked(false);
+        } else {
+            await postData(beerId, userId);
+            console.log("test de post", beerId, userId);
+            setIsLiked(true); 
+        }
+    };
+    
+
+    if (loading) return <div className="container mx-auto mt-20 px-10 py-14 italic text-center text-lg bg-gray-100">La bière est entrain d'être brassée...</div>
+    if (error) return <div className="container mx-auto mt-20 px-10 py-14 text-red-600 italic text-center text-lg bg-gray-100">{error}</div>
 
     const brewId = beer?.brewery_id
 
@@ -90,7 +124,9 @@ function BeersDetail() {
                             <button className="flex ml-auto text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded">
                                 <NavLink to={`/breweries/${brewId}`}>Voir la brasserie</NavLink>
                             </button>
-                            <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 hover:text-yellow-600 ml-4">
+                            <button className={`rounded-full w-10 h-10 ${isLiked ? `bg-yellow-400 text-white` : `bg-gray-200`} p-0 border-0 inline-flex items-center justify-center text-gray-500 hover:text-yellow-600 ml-4`}
+                                onClick={() => toggleLike(Number(id), 3)}
+                            >
                                 <FontAwesomeIcon icon={faHeart} />
                             </button>
                         </div>
