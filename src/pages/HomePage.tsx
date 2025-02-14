@@ -13,7 +13,7 @@ function HomePage() {
     const { data: beerList, loading, error } = useFetch<{ beers: Beer[] }>(BEERS_API);
     const beers = beerList?.beers
     const navigate = useNavigate();
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    
     const [query, setQuery] = useState("");
 
     if (loading) return <div className="container mx-auto mt-20 px-10 py-14 italic text-center text-lg bg-gray-100">Les bières sont entrain d'être brassées...</div>
@@ -44,7 +44,7 @@ function HomePage() {
         if (carousel) carousel.scrollLeft += 300;
     };
 
-
+    console.log(query)
     return (
         <>
             <section className="text-gray-600 body-font">
