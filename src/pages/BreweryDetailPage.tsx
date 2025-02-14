@@ -18,12 +18,12 @@ function BreweryDetailPage() {
     const brewery = brew?.brewery
 
     // Récupérer les infos du propriétaire
-    const USER_API = `http://localhost:3000/breweries/owner/${id}`
+    const USER_API = `http://localhost:3000/users/breweries/${id}`
     const { data: user } = useFetch<{user : User}>(USER_API)
     const owner = user?.user
 
-    if (loading) return <div>On arrive bientôt...</div>
-    if (error) return <div>Erreur lors du chargement, {error}</div>
+    if (loading) return <div className="container mx-auto mt-20 px-10 py-14 italic text-center text-lg bg-gray-100">On arrive bientôt...</div>
+    if (error) return <div className="container mx-auto mt-20 px-10 py-14 text-red-600 italic text-center text-lg bg-gray-100">{error}</div>
 
     console.log(owner)
     return (

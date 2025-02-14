@@ -1,10 +1,19 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton } from '@headlessui/react';
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import { NavLink, Outlet } from "react-router-dom";
 import beericon from "../assets/beericon.png"
+import { useFetch } from '../hooks/useFetch';
+import { User } from '../models/UserModel';
 
+const USER_API: string = "http://localhost:3000/users/3"
 
 function MainLayout() {
+
+      const { data: userData, loading, error } = useFetch<{ user: User }>(USER_API);
+      const user = userData?.user;
+
+      if (loading) return <div className="container mx-auto mt-20 px-10 py-14 italic text-center text-lg bg-gray-100">Nous récupérons vos informations ... </div>
+      if (error) return <div className="container mx-auto mt-20 px-10 py-14 text-red-600 italic text-center text-lg bg-gray-100">{error}</div>
 
   return (
     <>
@@ -53,15 +62,15 @@ function MainLayout() {
               <Menu as="div" className="relative ml-3">
                 <div>
                   <NavLink to='/profile'>
-                    <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <div className="relative flex rounded-full bg-gray-800 text-sm ">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Ouvrir Profil</span>
                       <img
                         alt=""
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        className="size-8 rounded-full"
+                        src={user?.profile_pic}
+                        className="size-8 object-cover rounded-full"
                       />
-                    </MenuButton>
+                    </div>
                   </NavLink>
                 </div>
               </Menu>

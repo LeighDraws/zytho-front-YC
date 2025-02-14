@@ -58,8 +58,8 @@ function BeerList() {
         }
     }, [selectedCategories, beers]);
 
-    if (loading) return <div>Les bières sont entrain d'être brassées...</div>
-    if (error) return <div>Erreur lors du chargement, {error}</div>
+    if (loading) return <div className="container mx-auto mt-20 px-10 py-14 italic text-center text-lg bg-gray-100">Les bières sont entrain d'être brassées...</div>
+    if (error) return <div className="container mx-auto mt-20 px-10 py-14 text-red-600 italic text-center text-lg bg-gray-100">{error}</div>
     console.log("bières: ", filteredBeers)
 
     return (

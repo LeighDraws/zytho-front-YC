@@ -10,6 +10,7 @@ import BreweriesPage from './pages/BreweriesPage';
 import BeerDetailPage from './pages/BeerDetailPage';
 import BreweryDetailPage from './pages/BreweryDetailPage';
 import BeerList from './pages/BeerList';
+import ProfilePage from './pages/ProfilePage';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path='/beers/:id' element={<BeerDetailPage/>} />
           <Route path='/breweries' element={<BreweriesPage/>} />
           <Route path='/breweries/:id' element={<BreweryDetailPage />} />
+          <Route path='/profile' element={<ProfilePage/>} />
         </Route>
       </Routes>
     </>

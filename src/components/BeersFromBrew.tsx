@@ -2,15 +2,15 @@ import { Beer } from "../models/BeerModel";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useFetch } from "../hooks/useFetch";
+import { Link } from "react-router-dom";
 
-function BeersFromBrew({ breweryId }:{ breweryId: number }) {
+function BeersFromBrew({ breweryId }: { breweryId: number }) {
 
     // Récupérer les bières de la brasserie
     const BEERS_BREWERIES_API = `http://localhost:3000/beers/breweries/${breweryId}`
     const { data: beersData } = useFetch<{ beers: Beer[] }>(BEERS_BREWERIES_API)
 
     const beers = beersData?.beers;
-    console.log("bières:", beers)
 
     const scrollLeft = () => {
         const carousel = document.getElementById("beerCarousel");
@@ -41,19 +41,23 @@ function BeersFromBrew({ breweryId }:{ breweryId: number }) {
                         >
                             {Array.isArray(beers) && beers.length > 0 ? (
                                 beers.map((beer) => (
+
                                     <div className="xl:w-1/4 md:w-1/2 flex-shrink-0 snap-center py-4 px-1" key={beer.beer_id}>
-                                        <div className="bg-gray-100 h-full p-6 rounded-lg">
-                                            <img
-                                                className="h-40 rounded w-full object-cover object-center mb-6"
-                                                src={beer.picture_url}
-                                                alt="content"
-                                            />
-                                            <h3 className="tracking-widest text-yellow-500 text-xs font-medium title-font">{beer.category}</h3>
-                                            <h2 className="text-lg text-gray-900 font-medium title-font mb-4">{beer.name}</h2>
-                                            <p className="text-sm text-gray-500 justify-self-start uppercase">{beer.color}</p>
-                                            <p className="leading-relaxed text-base">{beer.description}</p>
-                                        </div>
+                                        <Link to={`/beers/${beer.beer_id}`}>
+                                            <div className="bg-gray-100 h-full p-6 rounded-lg">
+                                                <img
+                                                    className="h-40 rounded w-full object-cover object-center mb-6"
+                                                    src={beer.picture_url}
+                                                    alt="content"
+                                                />
+                                                <h3 className="tracking-widest text-yellow-500 text-xs font-medium title-font">{beer.category}</h3>
+                                                <h2 className="text-lg text-gray-900 font-medium title-font mb-4">{beer.name}</h2>
+                                                <p className="text-sm text-gray-500 justify-self-start uppercase">{beer.color}</p>
+                                                <p className="leading-relaxed text-base">{beer.description}</p>
+                                            </div>
+                                        </Link>
                                     </div>
+
                                 ))
                             ) : (
                                 <div>Pas de bières pour le moment</div>
@@ -69,7 +73,7 @@ function BeersFromBrew({ breweryId }:{ breweryId: number }) {
                         </button>
                     </div>
                 </div>
-            </section>
+            </section >
         </>
     )
 }
