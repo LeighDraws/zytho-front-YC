@@ -70,3 +70,9 @@ npm run dev
 # ou
 yarn dev
 ```
+
+### Application mise en ligne
+- Base de données en Postgresql sur **Neon**
+- API mise en ligne avec **Render**
+- Front déployé en déploiement continu sur **Vercel** 
+- [Site disponible ici](https://zytho-front-yc.vercel.app/)
