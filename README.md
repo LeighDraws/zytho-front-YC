@@ -1,50 +1,72 @@
-# React + TypeScript + Vite
+# Zythologue - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+Zythologue est une application frontend développée en React avec TypeScript qui permet d'afficher des bières et des brasseries grâce à une API REST. Ce projet fait suite à une API que j'avais développée, permettant d'afficher des bières, des brasseries et d'ajouter des bières en favoris.
 
-Currently, two official plugins are available:
+## Fonctionnalités ✨
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Page listant toutes les bières
+- Affichage des bières en grille avec :
+  - Photo
+  - Nom
+  - Type
+  - Catégorie
+  - Aperçu rapide
+- Lien permettant d’accéder à une fiche détaillée pour chaque bière.
 
-## Expanding the ESLint configuration
+### Fiche bière
+- Affichage détaillé contenant :
+  - Description
+  - Ingrédients
+  - Taux d’alcool
+  - Origine
+- Lien vers la brasserie. 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Page listant toutes les brasseries
+- Présentation des brasseries avec leurs informations principales :
+  - Nom
+  - Localisation
+- Cliquer sur une brasserie mène vers sa page détail.
 
-- Configure the top-level `parserOptions` property like this:
+### Page affichant la brasserie en détail
+- Informations sur la brasserie.
+- Liste déroulante des bières de la brasserie.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Recherche et filtres avancés
+- Barre de recherche dynamique avec suggestions automatiques.
+- Filtres par catégories.
+
+### Favoris
+- Une page permettant aux utilisateurs de consulter et gérer leurs bières favorites.
+- Sur la page détail d'une bière le bouton "❤️" met en favoris la bière.
+
+## Technologies et outils
+- **React JS + TypeScript** pour la gestion de l’interface utilisateur.
+- **React Router** pour la navigation entre les pages.
+- **Axios** pour consommer l’API REST.
+- **TailwindCSS** pour un design responsive et moderne.
+
+## Installation et démarrage
+
+### Prérequis
+- Node.js installé (version recommandée : LTS)
+- Un gestionnaire de paquets comme `npm` ou `yarn`
+
+### Installation
+```bash
+# Cloner le dépôt
+git clone https://github.com/ton-projet/zythologue.git
+cd zythologue
+
+# Installer les dépendances
+npm install
+# ou
+yarn install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### Démarrage du projet
+```bash
+npm run dev
+# ou
+yarn dev
 ```
